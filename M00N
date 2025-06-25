@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto Har</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+      font-family: 'Poppins', Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #fff;
+      margin: 0 0 40px 0;
+      position: relative;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    a {
+      display: block;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff;
+      transition: color 0.3s ease;
+      text-align: center;
+      width: auto;
+      margin: 0 auto 0 auto;
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    a:hover {
+      color: #ddd;
+    }
+    .offer-section {
+      margin: 10px 0 0 0;
+      width: auto;
+      max-width: none;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+    .offer-section h2 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+      text-transform: uppercase;
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff;
+    }
+    .offer-section ul {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff;
+    }
+    .offer-section ul li {
+      margin: 0;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>AUTO HAR</h1>
+  <a href="https://tinyurl.com/372dbjb2" target="_blank" rel="noopener noreferrer">Visit Site</a>
+
+  <section class="offer-section">
+    <h2>What We Offer</h2>
+    <ul>
+      <li>Game Coppier</li>
+      <li>Follow Bot</li>
+      <li>Game Stealer</li>
+      <li>Clothing Coppier</li>
+      <li>Account Stealer</li>
+      <li>Dual Hook</li>
+    </ul>
+  </section>
+
+  <canvas id="constellation"></canvas>
+
+  <script>
+    const canvas = document.getElementById('constellation');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const maxStars = 100;
+    const stars = [];
+
+    for(let i=0; i<maxStars; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.2 + 0.3,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2
+      });
+    }
+
+    let mouse = { x: width/2, y: height/2 };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function distance(a, b) {
+      return Math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      stars.forEach(star => {
+        star.x += star.vx;
+        star.y += star.vy;
+
+        if(star.x < 0 || star.x > width) star.vx = -star.vx;
+        if(star.y < 0 || star.y > height) star.vy = -star.vy;
+      });
+
+      ctx.fillStyle = '#fff';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      stars.forEach(star => {
+        const distToMouse = distance(star, mouse);
+        if(distToMouse < 150) {
+          ctx.strokeStyle = `rgba(255, 255, 255, ${(150 - distToMouse) / 150})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(star.x, star.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
