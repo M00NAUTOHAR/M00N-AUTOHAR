@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto Har</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+      font-family: 'Poppins', Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #fff;
+      margin: 0 0 40px 0;
+      position: relative;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    a {
+      display: block;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff;
+      transition: color 0.3s ease;
+      text-align: center;
+      width: auto;
+      margin: 0 auto 0 auto;
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    a:hover {
+      color: #ddd;
+    }
+    .offer-section {
+      margin: 10px 0 0 0;
+      width: auto;
+      max-width: none;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+    .offer-section h2 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+      text-transform: uppercase;
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff;
+    }
+    .offer-section ul {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 0 5px #fff,
+        0 0 10px #fff;
+    }
+    .offer-section ul li {
+      margin: 0;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>AUTO HAR</h1>
+  <a
